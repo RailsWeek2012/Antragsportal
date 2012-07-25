@@ -1,0 +1,60 @@
+<h1>Listet die Antraege </h1>
+
+<table>  
+  
+<% @motions.each do |motion| %>
+  <tr>
+    <td><h2><%= motion.title %></h2></td>
+  </tr>
+  <tr>
+    <td><%= motion.text %></td>
+  </tr>
+  <tr>
+  <td colspan="10">
+  		<b>Zugeordnete Projekte:</b><br>
+  		
+  		<% @projects = Motion.find(motion.id).projects %>	
+  			
+  		<% @projects.each do |project| %>
+  			<a href="http://localhost:3000/showmotions?projectid=<%= project.id %>">[<%= project.name %>]</a>&nbsp;&nbsp;
+  		<% end %>
+  	</td>
+  	</tr>
+  	<tr><td>
+  		
+  <% @tags = Tag.where("motion_id=?",motion.id) %>
+  
+  <% @tags.each do |tag| %>
+  <ul>
+    <li><%= tag.name %>&nbsp;&nbsp;
+    <%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  </ul>
+<% end %>
+<%= link_to 'New Tag', new_tag_path %></td>
+  </tr>
+  <% @decisions = Decision.where("motion_id=?",motion.id) %>
+  
+  <% @decisions.each do |decision| %>
+  <tr>
+  	<td>&nbsp;</td>
+  </tr>
+  <tr>
+  	<td><span style="color:green;"><%= decision.commitee_name %><br>(<%= decision.commitee_date.strftime('%d.%m.%Y') %>)</span></td>
+  	<td colspan="2"><%= decision.text %></td>
+  </tr>
+  
+  <% @votes = Vote.where("id=?",decision.vote_id) %>
+  <tr>
+  	<td>Abstimmungsergebnis<br />
+  		<% @votes.each do |vote| %>
+  		<b>CDU:</b>&nbsp;<%= vote.cdu_party %>&nbsp;&nbsp;<b>SPD:</b>&nbsp;<%= vote.spd_party %>
+  		<% end %>
+  	</td>
+  </tr>
+  <% end %>
+  
+  <tr>
+  	<td>&nbsp;</td>
+  </tr>
+<% end %>
+</table>

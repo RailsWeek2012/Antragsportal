@@ -1,0 +1,38 @@
+<%= form_for(@decision) do |f| %>
+  <% if @decision.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@decision.errors.count, "error") %> prohibited this decision from being saved:</h2>
+
+      <ul>
+      <% @decision.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :vote_id %><br />
+    <%= f.number_field :vote_id %>
+  </div>
+  <div class="field">
+    <%= f.label :commitee_date %><br />
+    <%= f.date_select :commitee_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :motion_id , "Antragsnummer: "%><br />
+    <%= f.select :motion_id, Motion.all.map {|m| [m.register,m.id]} %>
+  </div>
+  <div class="field">
+    <%= f.label :text %><br />
+    <%= f.text_area :text %>
+  </div>
+  <div class="field">
+    <%= f.label :commitee_name %><br />
+    <%= f.text_area :commitee_name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

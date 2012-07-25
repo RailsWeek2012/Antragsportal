@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id:</b>
+  <%= @motion.id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @motion.title %>
+</p>
+
+<p>
+  <b>Text:</b>
+  <%= @motion.text %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @motion.date %>
+</p>
+
+<p>
+  <b>Register:</b>
+  <%= @motion.register %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @motion.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @motion.longitude %>
+</p>
+
+
+<%= link_to 'Edit', edit_motion_path(@motion) %> |
+<%= link_to 'Back', motions_path %>
