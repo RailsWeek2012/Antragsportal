@@ -1,4 +1,6 @@
 Antragsportal::Application.routes.draw do
+  root :to => 'motions#search'
+  
   resources :projects
 
   resources :votes
@@ -10,6 +12,10 @@ Antragsportal::Application.routes.draw do
   resources :motions
   
   get "showmotions" => "projects#showmotions"
+  get "search" => "motions#search"
+  post "search" => "motions#searchresult"
+  
+  get "showonemotion" => "motions#showonemotion"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

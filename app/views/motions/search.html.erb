@@ -1,0 +1,24 @@
+<div id="map" style="width: 600px; height: 400px"></div>
+
+	<script src="http://cdn.leafletjs.com/leaflet-0.3.1/leaflet.js"></script>
+	<script>
+		var map = new L.Map('map');
+
+		var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png',
+			cloudmadeAttribution = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
+			cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttribution});
+
+		map.setView(new L.LatLng(50.586, 8.683), 13).addLayer(cloudmade);
+
+		var markerLocation = new L.LatLng(<%= Motion.find(2).latitude %>, <%= Motion.find(2).longitude %>),
+			marker = new L.Marker(markerLocation);
+		map.addLayer(marker);
+		marker.bindPopup("<b><%= Motion.find(2).title %></b><br><a href=\"motions/2\">Zeige</a>");
+		
+
+	</script>
+
+<form class="well form-search" action="/search" method="post">
+    <input name="searchstring" type="text" class="input-medium search-query">
+    <button type="submit" class="btn">Search</button>
+</form>

@@ -1,33 +1,29 @@
-<h1>Listing decisions</h1>
+<h1>Anzeige aller Entscheidungen</h1>
 
-<table>
+<table class="table table-striped">
   <tr>
-    <th>Id</th>
-    <th>Vote</th>
-    <th>Motion</th>
-    <th>Text</th>
-    <th>Commitee name</th>
-    <th>Commitee date</th>
-    <th></th>
+    <th>Aktenzeichenn:</th>
+    <th>Antragstitel:</th>
+    <th>Ausschuss:</th>
+    <th>Entscheidungsdatum:</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @decisions.each do |decision| %>
+
+	
   <tr>
-    <td><%= decision.id %></td>
-    <td><%= decision.vote_id %></td>
-    <td><%= decision.motion_id %></td>
-    <td><%= decision.text %></td>
+    <td><%= Motion.find(decision.motion_id).register %></td>
+    <td><%= Motion.find(decision.motion_id).title %></td>
     <td><%= decision.commitee_name %></td>
-    <td><%= decision.commitee_date %></td>
-    <td><%= link_to 'Show', decision %></td>
-    <td><%= link_to 'Edit', edit_decision_path(decision) %></td>
-    <td><%= link_to 'Destroy', decision, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= decision.commitee_date.strftime('%d.%m.%Y') %></td>
+    <td><%= link_to 'Bearbeiten', edit_decision_path(decision), :class => "btn btn-mini" %></td>
+    <td><%= link_to 'Löschen', decision, method: :delete, :class => "btn btn-mini btn-danger" %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Decision', new_decision_path %>
+<%= link_to 'Neue Entscheidung', new_decision_path %>

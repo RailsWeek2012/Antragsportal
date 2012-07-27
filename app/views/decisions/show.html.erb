@@ -1,14 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Id:</b>
-  <%= @decision.id %>
-</p>
-
-<p>
-  <b>Vote:</b>
-  <%= @decision.vote_id %>
-</p>
 
 <p>
   <b>Motion:</b>
@@ -21,15 +12,15 @@
 </p>
 
 <p>
-  <b>Commitee name:</b>
+  <b>Ausschussname:</b>
   <%= @decision.commitee_name %>
 </p>
 
 <p>
-  <b>Commitee date:</b>
-  <%= @decision.commitee_date %>
+  <b>Ausschussdatum:</b>
+  <%= @decision.commitee_date.strftime('%d.%m.%Y') %>
 </p>
 
 
-<%= link_to 'Edit', edit_decision_path(@decision) %> |
-<%= link_to 'Back', decisions_path %>
+<%= link_to 'Bearbeiten', edit_decision_path(@decision) %> |
+<%= link_to 'Zurück zur Übersicht', decisions_path %>

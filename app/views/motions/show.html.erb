@@ -1,40 +1,51 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Id:</b>
-  <%= @motion.id %>
-</p>
-
-<p>
-  <b>Title:</b>
-  <%= @motion.title %>
-</p>
-
-<p>
-  <b>Text:</b>
-  <%= @motion.text %>
-</p>
-
-<p>
-  <b>Date:</b>
-  <%= @motion.date %>
-</p>
-
-<p>
-  <b>Register:</b>
+  <b>Aktenzeichen:</b><br>
   <%= @motion.register %>
 </p>
 
 <p>
-  <b>Latitude:</b>
-  <%= @motion.latitude %>
+  <b>Antragstitel:</b><br>
+  <%= @motion.title %>
 </p>
 
 <p>
-  <b>Longitude:</b>
-  <%= @motion.longitude %>
+  <b>Antragstext:</b><br>
+  <%= @motion.text %>
+</p>
+
+<p>
+  <b>Antragsdatum:</b><br>
+  <%= @motion.date.strftime('%d.%m.%Y') %>
 </p>
 
 
-<%= link_to 'Edit', edit_motion_path(@motion) %> |
-<%= link_to 'Back', motions_path %>
+<p>
+  <b>Geodaten:</b><br>
+  <%= @motion.latitude %>;&nbsp;<%= @motion.longitude %>
+</p>
+
+<p>
+  <%= show_motion_on_map (@motion) %>
+</p>
+
+<p><b>Tags:</b><br>
+ <% @tags.each do |tag| %>
+ <%= tag.name %>
+ <% end %>
+</p>
+<p>
+  		<b>Zugeordnete Projekte:</b><br>
+  		<ul>
+  		<% @projects.each do |project| %>
+  			<li>
+  			<%= project.name %>
+  			</li>
+  		<% end %>
+  		</ul>
+  	</td>
+  </tr>
+
+<%= link_to 'Bearbeiten', edit_motion_path(@motion) %> |
+<%= link_to 'Zurück', motions_path %>

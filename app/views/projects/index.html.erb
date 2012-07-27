@@ -1,6 +1,6 @@
-<h1>Listing projects</h1>
+<h1>Auflistung aller Projekte</h1>
 
-<table>
+<table class="table table-striped">
   <tr>
     <th>Id</th>
     <th>Name</th>
@@ -14,13 +14,12 @@
   <tr>
     <td><%= project.id %></td>
     <td><%= project.name %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Bearbeiten', edit_project_path(project), :class => "btn btn-mini"  %></td>
+    <td><%= link_to 'Löschen', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-mini btn-danger"  %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Project', new_project_path %>
+<%= link_to 'Neues Projekt', new_project_path %>

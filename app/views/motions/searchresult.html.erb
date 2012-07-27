@@ -1,16 +1,6 @@
-<h1>Liste aller Anträge</h1>
+<%=params[:searchstring]%>
 
-<table class="table table-striped">
-  <tr>
-    <th>Aktenzeichen:</th>
-    <th>Title:</th>
-    <th>Antragsdatum:</th>
-    <th>Latitude:</th>
-    <th>Longitude:</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<% @motions = Motion.where("id = ?",params[:searchstring]) %>
 
 <% @motions.each do |motion| %>
   <tr>
@@ -25,8 +15,4 @@
   </tr>
 
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'Neuer Antrag', new_motion_path %>

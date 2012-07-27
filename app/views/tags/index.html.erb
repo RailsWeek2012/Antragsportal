@@ -1,11 +1,11 @@
-<h1>Listing tags</h1>
+<h1>Auflistung aller Tags</h1>
 
-<table>
+<table class="table table-striped">
   <tr>
-    <th>Id</th>
-    <th>Tags</th>
-    <th>Motion</th>
-    <th></th>
+    <th>Tagname</th>
+    <th>Aktenzeichenn:</th>
+    <th>Antragstitel:</th>
+    <th>Antrag</th>
     <th></th>
     <th></th>
   </tr>
@@ -13,14 +13,14 @@
 <% @tags.each do |tag| %>
   <tr>
     <td><%= tag.name %></td>
-    <td><%= tag.motion_id %></td>
-    <td><%= link_to 'Show', tag %></td>
-    <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-    <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<td><%= Motion.find(tag.motion_id).register %></td>
+    <td><%= Motion.find(tag.motion_id).title %></td>
+    <td><%= link_to 'Bearbeiten', edit_tag_path(tag), :class => "btn btn-mini" %></td>
+    <td><%= link_to 'Löschen', tag, method: :delete, :class => "btn btn-mini btn-danger" %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Tag', new_tag_path %>
+<%= link_to 'Neuer Tag', new_tag_path %>

@@ -1,8 +1,17 @@
 class MotionsController < ApplicationController
+  def search
+    
+  end
+  
   # GET /motions
   # GET /motions.json
   def index
     @motions = Motion.all
+    
+    
+    ####### FEHLER!!!!!!!!
+    ####### FEHLER!!!!!!!!####### FEHLER!!!!!!!!####### FEHLER!!!!!!!!####### FEHLER!!!!!!!!####### FEHLER!!!!!!!!####### FEHLER!!!!!!!!
+    
     @tags = Tag.where("motion_id= ?",1)
     
 
@@ -16,6 +25,12 @@ class MotionsController < ApplicationController
   # GET /motions/1.json
   def show
     @motion = Motion.find(params[:id])
+    
+    #Besorgt sich alle passenden Tags zum Antrag
+    @tags = Tag.where("motion_id= ?",params[:id])
+    
+    #Besorgt sich alle passenden Projekte zum Antrag
+    @projects = Motion.find(params[:id]).projects
 
     respond_to do |format|
       format.html # show.html.erb
@@ -76,6 +91,18 @@ class MotionsController < ApplicationController
   def destroy
     @motion = Motion.find(params[:id])
     @motion.destroy
+    
+    # Löscht zum passenden Antrag auch alle Entscheidungen
+    @decisions = Decision.where("motion_id =?",params[:id])
+    @decisions.each do |decision|
+      decision.destroy
+    end
+    
+    #Löscht zum passenden Antrag auch alle zugehörigen Tags
+    @tags = Tag.where("motion_id =?",params[:id])
+    @tags.each do |tag|
+      tag.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to motions_url }
@@ -84,6 +111,13 @@ class MotionsController < ApplicationController
   end
   
   def search
+  end
+  
+  def searchresult
     # Funktion ermöglicht das Suchen nach Anträgen
+  end
+  
+  def showonemotion
+    @motion = Motion.find(1)
   end
 end

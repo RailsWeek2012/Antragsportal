@@ -5,10 +5,35 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.3.1/leaflet.css" />
 </head>
 
 <body>
-<%= yield %>
+	
+
+
+	<div class"container">
+		<div class="row-fluid">
+			<div class="span2">
+				<b>Adminverwaltung:</b>
+				<ul>
+					<li><a href="/motions">Anträge</a></li>
+					<li><a href="/decisions">Entscheidungen</a></li>
+					<li><a href="/projects">Projekte</a></li>
+					<li><a href="/tags">Tags</a></li>
+				</ul>
+				<b>Benutzeraktion:</b>
+				<ul>
+					<li><a href="/search">Suche</a></li>
+				</ul>	
+			</div>
+			
+			<div class="span8"><%= yield %></div>
+			<div class="span2"></div>
+		</div>
+	</div>
+
+
 
 </body>
 </html>

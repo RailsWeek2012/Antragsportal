@@ -15,22 +15,22 @@
     <%= f.label :vote_id %><br />
     <%= f.number_field :vote_id %>
   </div>
-  <div class="field">
-    <%= f.label :commitee_date %><br />
-    <%= f.date_select :commitee_date %>
-  </div>
 
   <div class="field">
     <%= f.label :motion_id , "Antragsnummer: "%><br />
     <%= f.select :motion_id, Motion.all.map {|m| [m.register,m.id]} %>
   </div>
   <div class="field">
-    <%= f.label :text %><br />
+    <%= f.label :text, "Abgestimmter Antragstext:" %><br />
     <%= f.text_area :text %>
   </div>
   <div class="field">
-    <%= f.label :commitee_name %><br />
-    <%= f.text_area :commitee_name %>
+    <%= f.label :commitee_name, "Ausschussname:" %><br />
+    <%= f.select :commitee_name, ["Bauausschuss","Sozialausschuss","Hauptausschuss","Stadtverordnetenversammlung"]%>
+  </div>
+  <div class="field">
+    <%= f.label :commitee_date, "Ausschussdatum:" %><br />
+    <%= f.date_select :commitee_date %>
   </div>
   <div class="actions">
     <%= f.submit %>

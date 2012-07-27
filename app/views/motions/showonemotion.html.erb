@@ -1,8 +1,8 @@
-<h1>Listet die Antraege </h1>
+<h1>Antrga mit Verlauf</h1>
 
 <table class="table table-striped"> 
-  
-<% @motions.each do |motion| %>
+	<% @motion = Motion.find(1) %>
+
   <tr>
     <td colspan="3"><h2><%= motion.title %></h2></td>
   </tr>
@@ -53,9 +53,5 @@
   	</td>
   </tr>
   <% end %>
-  
-  <tr>
-  	<td colspan="3">&nbsp;</td>
-  </tr>
-<% end %>
+
 </table>

@@ -78,6 +78,7 @@ class TagsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to tags_url }
       format.json { head :no_content }
+      format.js
     end
   end
 end
