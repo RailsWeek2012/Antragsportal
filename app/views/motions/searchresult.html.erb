@@ -1,7 +1,7 @@
-<%=params[:searchstring]%>
+<% @motions = Motion.where("title = ?",params[:searchstring]) %>
 
-<% @motions = Motion.where("id = ?",params[:searchstring]) %>
-
+<b>Suche nach Anträgen:</b>
+<table class="table table-striped">
 <% @motions.each do |motion| %>
   <tr>
     <td><%= motion.register %></td>
@@ -10,9 +10,9 @@
     <td><%= motion.latitude %></td>
     <td><%= motion.longitude %></td>
     <td><%= link_to 'Details', motion, :class => "btn btn-mini btn-info" %></td>
-    <td><%= link_to 'Bearbeiten', edit_motion_path(motion), :class => "btn btn-mini"  %></td>
-    <td><%= link_to 'Löschen', motion, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-mini btn-danger" %></td>
   </tr>
 
 <% end %>
+
+</table>
 

@@ -1,4 +1,4 @@
-<h1>Listing votes</h1>
+<h1>Liste der Abstimmungen</h1>
 
 <table>
   <tr>
@@ -16,8 +16,8 @@
     <td><%= vote.cdu_party %></td>
     <td><%= vote.spd_party %></td>
     <td><%= link_to 'Show', vote %></td>
-    <td><%= link_to 'Edit', edit_vote_path(vote) %></td>
-    <td><%= link_to 'Destroy', vote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Edit', edit_vote_path(vote), :class => "btn btn-mini" %></td>
+    <td><%= link_to 'Destroy', vote, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-mini btn-danger" %></td>
   </tr>
 <% end %>
 </table>

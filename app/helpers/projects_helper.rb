@@ -7,7 +7,7 @@ module ProjectsHelper
       projects = Motion.find(motion.id).projects 
       
       projects.each do |project|
-        htmlstring += '<a href="showmotions?projectid=' + (project.id).to_s + '">[' + project.name + ']&nbsp;&nbsp;'
+        htmlstring += '<a href="/projectmotions/' + (project.id).to_s + '">[' + project.name + ']&nbsp;&nbsp;'
       end
         
       htmlstring.html_safe

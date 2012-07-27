@@ -1,25 +1,26 @@
-<p id="notice"><%= notice %></p>
+<h1>Listet die Anträge </h1>
 
 <table class="table table-striped"> 
   
+<% @motions.each do |motion| %>
   <tr>
-    <td colspan="3"><h2><%= @motion.title %></h2></td>
+    <td colspan="3"><h2><%= motion.title %></h2></td>
   </tr>
   <tr>
-    <td colspan="3"><%= @motion.text %></td>
+    <td colspan="3"><%= motion.text %></td>
   </tr>
     <tr>		
   		<td>
   			<b>Standort:</b><br /> 
-  			<%= show_motion_on_map (@motion) %>
+  			<%= show_motion_on_map (motion) %>
   		</td>		
   		<td>
   			<b>Zugeordnete Projekte:</b><br>
-  			<%= show_associated_projects(@motion) %>
+  			<%= show_associated_projects(motion) %>
   		</td>
 		<td>
   			<b>Zugeordnete Tags:</b></br>		
-  			<% @tags = Tag.where("motion_id=?",@motion.id) %>
+  			<% @tags = Tag.where("motion_id=?",motion.id) %>
   			<ul>
   			<% @tags.each do |tag| %>
   			
@@ -33,7 +34,7 @@
 			<%= link_to 'Neues Tag', new_tag_path, :class => "btn btn-success btn-mini" %></td>
   	</tr>
   
-  <% @decisions = Decision.where("motion_id=?",@motion.id) %>
+  <% @decisions = Decision.where("motion_id=?",motion.id) %>
   
   <% @decisions.each do |decision| %>
   <tr>
@@ -47,7 +48,9 @@
   	<td colspan="3"><%= show_votes_by_decision(decision) %>
   </tr>
   <% end %>
+  
+  <tr>
+  	<td colspan="3">&nbsp;</td>
+  </tr>
+<% end %>
 </table>
-
-<%= link_to 'Bearbeiten', edit_motion_path(@motion) %> |
-<%= link_to 'Zurück', motions_path %>

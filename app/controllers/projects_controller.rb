@@ -24,10 +24,8 @@ class ProjectsController < ApplicationController
   
   
   
-  def showmotions
-    if (params[:projectid] != nil)
-      @motions = Project.find(params[:projectid]).motions.order("date DESC")
-    end
+  def projectmotions
+      @motions = Project.find(params[:id]).motions.order("date DESC")
     
     
     

@@ -2,9 +2,7 @@
 
 <table class="table table-striped">
   <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th></th>
+    <th>Projektname:</th>
     <th></th>
     <th></th>
   </tr>
@@ -12,7 +10,6 @@
   
 <% @projects.each do |project| %>
   <tr>
-    <td><%= project.id %></td>
     <td><%= project.name %></td>
     <td><%= link_to 'Bearbeiten', edit_project_path(project), :class => "btn btn-mini"  %></td>
     <td><%= link_to 'Löschen', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-mini btn-danger"  %></td>

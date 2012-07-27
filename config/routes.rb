@@ -11,11 +11,13 @@ Antragsportal::Application.routes.draw do
 
   resources :motions
   
-  get "showmotions" => "projects#showmotions"
+  resources :users, only: [:new, :create]
+  
+  get "/projectmotions/:id" => "projects#projectmotions"
   get "search" => "motions#search"
   post "search" => "motions#searchresult"
+
   
-  get "showonemotion" => "motions#showonemotion"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

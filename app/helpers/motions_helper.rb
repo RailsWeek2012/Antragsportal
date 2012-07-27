@@ -1,6 +1,6 @@
 module MotionsHelper
   
-  #Dient zur Anzeige eines Antrags auf einer Karte
+  # Dient zur Anzeige eines Antrags auf einer Karte
   def show_motion_on_map (motion)
 
         #Berechnet den Ausschnitt
@@ -15,5 +15,8 @@ module MotionsHelper
         iframe_with_map.html_safe
   end
   
-  
+  # Dient zur Anzeiger der Basisinformationen eines Antrags
+  def show_basic_information_from_motion(mottion)
+    
+  end
 end
